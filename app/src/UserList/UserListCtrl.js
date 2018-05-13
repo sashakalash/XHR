@@ -1,17 +1,16 @@
 'use strict'
 
-userApp.controller('UserListCtrl', function ($scope, UsersService, PostsService) {
+userApp.controller('UserListCtrl', function ($scope, $q, UsersService, PostsService) {
   $scope.userLoaded = false
-  UsersService.getUsers().then(function (response) {
-    $scope.users = response.data;
-    $scope.userLoaded = true;
+  $q.all({
+    users: UsersService.getUsers(),
+    posts: PostsService.getPosts()
   })
-
-  PostsService.getPosts().then(function (response) {
-    $scope.posts = response.data;
+  .then(values => {
+    $scope.users = values.users.data,
+    $scope.posts = values.posts.data;
     $scope.userLoaded = true;
-  })
-
+  });
 
 /*   UsersService.getUsers().then(function (response) {
     $scope.users = response.data
