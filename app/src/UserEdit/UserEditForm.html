@@ -1,0 +1,27 @@
+
+<style>
+    .ng-dirty.ng-invalid {
+        border-color: #FA787E;
+    }
+
+    .ng-dirty.ng-valid {
+        border-color: #78FA89;
+    }
+</style>
+
+<div class="alert alert-success" role="alert" ng-if="creationSuccess">Пользователь {{newUserId}} отредактирован!</div>
+
+<form name="userEditForm" novalidate>
+    <div class="form-group">
+        <label>Имя</label>
+        <input class="form-control" ng-model="newUsersData.name" type="text" placeholder="Имя" required>
+    </div>
+    <div class="form-group">
+        <label>Логин</label>
+        <input class="form-control" ng-model="newUsersData.username" type="text" placeholder="Логин" required>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="editUser(newUsersData)" ng-disabled="userEditForm.$invalid">Послать</button>
+    <a class="btn btn-warning" href="#!/users/{{ id }}">Отмена</a>
+</form>
+ 
+</div>
