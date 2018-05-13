@@ -3,6 +3,7 @@
 userApp.controller('UserEditCtrl', function($scope, $routeParams, UsersService) {
   $scope.newUsersData = {};
   $scope.id = $routeParams['userId'];
+  
   $scope.editUser = function (userData) {
     $scope.creationSuccess = false;
 

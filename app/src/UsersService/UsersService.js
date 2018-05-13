@@ -1,6 +1,6 @@
 angular
 .module('UserApp')
-.factory('UsersService', function($http, $q) {
+.factory('UsersService', function($http) {
 
         return {
 
